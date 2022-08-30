@@ -10,14 +10,27 @@ const style = {
   text: `text-sm font-medium p-3 h-12`,
   loader: `column`
 }
-
+const ImagePerRow = 5
 const Series = () => {
   const [data, setData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [next, setNext] = useState(ImagePerRow)
+  const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  // }, []);
 
   function truncate(str) {
-    return str.length > 18 ? str.substring(0, 18) + "..." : str;
-}
+    return str.length > 15 ? str.substring(0, 15) + "..." : str;
+  }
+
+  const HandleMore = () => {
+    setNext(next + ImagePerRow)
+  }
 
   // const RapidApi = async (e) => {
   //   await fetch(`https://movies-app1.p.rapidapi.com/api/movies`, {
@@ -32,18 +45,20 @@ const Series = () => {
   // };
 
 
-  
+
   const API_URL = 'https://api.themoviedb.org/3/movie/now_playing?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c';
   const API_img = 'https://image.tmdb.org/t/p/w500'
-  
+
   useEffect(() => {
+    setLoading(true);
     fetch(API_URL)
-    .then((res) => res.json())
-    .then(data => {
-      setData(data.results)
-      console.log(data, "line112")
-    })
-    
+      .then((res) => res.json())
+      .then(data => {
+        setData(data.results)
+        setLoading(false);
+        console.log(data, "line112")
+      })
+
   }, []);
   console.log(data, 'line17')
   const filterItem = !searchInput ? data : data.filter(item => item.title.toLowerCase().includes(searchInput.toLowerCase()))
@@ -65,24 +80,40 @@ const Series = () => {
             <input type="search" placeholder="Search" onChange={(e) => setSearchInput(e.target.value)} className="py-2 px-2 w-80 text-red-500 bg-neutral-50 border outline-none border-red-500 rounded" />
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 h-1/2">
-            {data && data.length > 0 ? (
+            {loading ? (
+            (<div className="Loading flex justify-center items-center h-80 w-full">
+              <PulseLoader color="#c70000" />
+            </div>)
+            ) : 
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-8 h-1/2">
-                {filterItem.map((item) => (
+                {filterItem?.slice(0, next).map((item) => (
                   <Link to={`/detail/${item.id}`}>
-                  <div className={style.card} key={item.id}>
-                    <div className="overflow-hidden">
-                      <img src={API_img+item.backdrop_path} alt={item.title} className="object-cover h-64 w-full block img-fluid" />
+                    <div className={style.card} key={item.id}>
+                      <div className="overflow-hidden">
+                        <img src={API_img + item?.backdrop_path} alt={item.title} className="object-cover h-64 w-full block img-fluid" />
+                      </div>
+                      <h5 className={`${style.text} bg-Neutral-500 border-t-stone-50`}>{truncate(item.title)}</h5>
                     </div>
-                    <h5 className={`${style.text} bg-Neutral-500 border-t-stone-50`}>{truncate(item.title)}</h5>
-                  </div>
                   </Link>
                 ))
                 }
               </div>
-            ) : (<div className="Loading flex justify-center items-center h-80 w-full">
-              <PulseLoader color="#c70000" />
-            </div>)
             }
+          </div>
+          <div className="flex justify-center items-center">
+            {/* {
+            Loading ? (
+
+              next < filterItem?.length && 
+              <button  className="py-2 px-2 lg:py-2 lg:px-4 text-sm lg:text-lg bg-button rounded mt-5 mb-10" onClick={HandleMore}>Load more</button>
+            ): <button  className="py-2 px-2 lg:py-2 lg:px-4 text-sm lg:text-lg bg-button rounded mt-5 mb-10" onClick={HandleMore}>Load more</button>
+          } */}
+
+            {
+              next < filterItem?.length &&
+              <button className="py-2 px-2 lg:py-2 lg:px-4 text-sm lg:text-lg bg-button rounded mt-5 mb-10" onClick={HandleMore}>{loading ? <PulseLoader color="#c70000" />: "Load more"}</button>
+            }
+
           </div>
         </div>
       </div>

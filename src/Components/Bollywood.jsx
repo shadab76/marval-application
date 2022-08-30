@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 // import img from "../Accects/img.png"
 
-const Bollywood = () => {
-  const params= useParams()
-  const [movies, setMovies] = useState([]);
 
-  const API_URL = 'https://api.themoviedb.org/3/movie/popular?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c';
-  const API_vedio = `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c`
+const imagePerRow = 2;
+
+const Bollywood = () => {
+  // const params= useParams()
+  const [movies, setMovies] = useState([]);
+  const [next, setNext] = useState(imagePerRow);
+
+  const API_URL = 'https://api.themoviedb.org/3/movie/top_rated?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c';
+  // const API_vedio = `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c`
   const API_img = 'https://image.tmdb.org/t/p/w500'
   useEffect(() => {
     fetch(API_URL)
@@ -20,6 +24,10 @@ const Bollywood = () => {
 
   // const { date, explanation, media_type, service_version, title, url } = item
   console.log(movies, "line20")
+
+  const handleMoreImage =()=> {
+    setNext(next + imagePerRow)
+  }
 
   return (
     <>
@@ -34,12 +42,12 @@ const Bollywood = () => {
       <div className="container mx-auto xl:px-4">
       <div className="grid gap-4 md:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 mt-20 mb-20 h-4/6">
         {
-          movies.map((item) => {
+          movies?.slice(0, next)?.map((item) => {
             return (
               <>
                 <div className="h-full block mx-auto col-auto mb-3" key={item.id}>
-                  <img src={API_img+item.backdrop_path} className="img-fluid" alt="" />
-                  <div className="flex flex-wrap justify-between py-2 px-2 bg-button">
+                  <img src={API_img+item?.backdrop_path} className="img-fluid" alt="" />
+                  <div className="flex flex-wrap justify-between py-2 px-2 bg-gray-900 border border-gray-100">
                     <span className="text-rose-200">Views {item.vote_count}</span><span className="text-rose-200">{item.popularity}</span>
                   </div>
                 </div>
@@ -57,6 +65,16 @@ const Bollywood = () => {
         }
 
 
+      </div>
+      <div className="flex justify-center items-center">
+      {next < movies?.length && (
+          <button
+            className="py-2 px-2 lg:py-2 lg:px-4 text-sm lg:text-lg bg-button rounded mt-5 mb-10"
+            onClick={handleMoreImage}
+          >
+          {next < movies?.length ? "Load more" : "Loading..."}
+          </button>
+        )}
       </div>
       </div>
     </>
