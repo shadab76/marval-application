@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 // import img from "../Accects/img.png"
 
 const Hollywood = () => {
   const params= useParams()
   const [movies, setMovies] = useState([]);
 
-  const API_URL = 'https://api.themoviedb.org/3/movie/popular?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c';
-  const API_img = 'https://image.tmdb.org/t/p/w500'
-  const API_VEDIO = `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c`
+  const API_URL = 'https://api.themoviedb.org/3/movie/top_rated?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c';
+  // const API_img = 'https://image.tmdb.org/t/p/w500'
+  // const API_VEDIO = `https://api.themoviedb.org/3/movie/${params.id}/videos?api_key=d0c23e9309c4c34ce21eae28c7aaeb1c`
   useEffect(() => {
-    fetch(API_VEDIO)
+    fetch(API_URL)
       .then((res) => res.json())
       .then(data => {
         setMovies(data.results)
