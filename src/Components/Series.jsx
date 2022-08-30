@@ -16,7 +16,7 @@ const Series = () => {
   const [searchInput, setSearchInput] = useState('');
 
   function truncate(str) {
-    return str.length > 25 ? str.substring(0, 28) + "..." : str;
+    return str.length > 18 ? str.substring(0, 18) + "..." : str;
 }
 
   // const RapidApi = async (e) => {
@@ -66,7 +66,7 @@ const Series = () => {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 h-1/2">
             {data && data.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 h-1/2">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-8 h-1/2">
                 {filterItem.map((item) => (
                   <Link to={`/detail/${item.id}`}>
                   <div className={style.card} key={item.id}>

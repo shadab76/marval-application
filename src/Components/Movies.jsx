@@ -16,7 +16,7 @@ const Movies = () => {
 
 
     function truncate(str) {
-        return str.length > 25 ? str.substring(0, 28) + "..." : str;
+        return str.length > 18 ? str.substring(0, 18) + "..." : str;
     }
     // public key e84f571b00b8c70f7a2dc2c9d4cd22b8
     //private key a113856e5528662d4d297695b8c226de0f2d9d14
@@ -69,7 +69,7 @@ const Movies = () => {
                     <div className="flex flex-wrap items-center justify-center gap-4">
                         {Loading ? <Loader className={style.loader} /> :
                             (
-                                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
                                     {filterItem.map((item) => (
                                         <Link to={`/detail/${item.id}`}>
                                         <div className={style.card} key={item.id}>
