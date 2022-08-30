@@ -113,9 +113,9 @@ const PopularMovies = () => {
                                     <>
                                         {
                                             dataMarvel.map((item) => (
-                                                <SwiperSlide>
+                                                <SwiperSlide key={item.id}>
                                                     <Link to={`/detail2/${item.id}`}>
-                                                        <div className={style.card} key={item.id}>
+                                                        <div className={style.card}>
                                                             <div className=" overflow-hidden">
                                                                 <img src={API_img+item.backdrop_path} alt="" className=" h-80 w-full object-cover img-fluid" />
                                                             </div>

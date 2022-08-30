@@ -32,7 +32,7 @@ const Bollywood = () => {
 
       </div>
       <div className="container mx-auto xl:px-4">
-      <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 mt-20 mb-20 h-4/6">
+      <div className="grid gap-4 md:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 mt-20 mb-20 h-4/6">
         {
           movies.map((item) => {
             return (
@@ -43,7 +43,7 @@ const Bollywood = () => {
                     <span className="text-rose-200">Views {item.vote_count}</span><span className="text-rose-200">{item.popularity}</span>
                   </div>
                 </div>
-                <div>
+                <div className="mb-8">
                   <h5 className="mb-4 text-xl text-rose-600 col-span-2">{item.original_title ? item.original_title : "loding..."}</h5>
                   <h5 className="mb-4 text-rose-200">Rating {item.vote_average}</h5>
                   <div className="flex flex-wrap gap-4 items-center mb-5">

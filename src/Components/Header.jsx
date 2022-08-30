@@ -5,6 +5,10 @@ import img1 from "../Accects/banner/img1.png"
 import img2 from "../Accects/banner/img2.png"
 import img3 from "../Accects/banner/img3.png"
 import img4 from "../Accects/banner/img4.png"
+import img5 from "../Accects/banner/banner5.jpg"
+import img6 from "../Accects/banner/banner4.jpg"
+import img7 from "../Accects/banner/banner-3.jpg"
+import halk from "../Accects/logohalk.png"
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,9 +19,9 @@ import SwiperCore, {
 SwiperCore.use([Parallax, Pagination ,Autoplay]);
 
 const MainSlider = [
-  { id: 1, name: "A Universe of Super Heroes", logo: img, img: "https://terrigen-cdn-dev.marvel.com/content/prod/1x/spidey_0812_com_mas_dsk_01.jpg", discription: "All Your Favorite Stories and More. Start Streaming Now." },
-  { id: 2, name: "A Universe of Super Heroes", logo: "https://terrigen-cdn-dev.marvel.com/content/prod/1x/she-hulk_lob_log_eye_01.png", img: "https://terrigen-cdn-dev.marvel.com/content/prod/1x/shehulkep1_mas_dsk.jpg", discription: "All Your Favorite Stories and More. Start Streaming Now." },
-  { id: 4, name: "MARVEL CHARACTERS", logo: img, img: "https://terrigen-cdn-dev.marvel.com/content/prod/1x/fanfour_0817_com_mas_dsk_01.jpg", discription: "Get hooked on a hearty helping of heroes and villains" },
+  { id: 1, name: "A Universe of Super Heroes", logo: img, img: img6, discription: "All Your Favorite Stories and More. Start Streaming Now." },
+  { id: 2, name: "A Universe of Super Heroes", logo: halk, img: img5, discription: "All Your Favorite Stories and More. Start Streaming Now." },
+  { id: 4, name: "MARVEL CHARACTERS", logo: img, img: img7, discription: "Get hooked on a hearty helping of heroes and villains" },
   { id: 5, name: "MARVEL CHARACTERS", logo: img, img: img1, discription: "Get hooked on a hearty helping of heroes and villains" },
   { id: 6, name: "MARVEL CHARACTERS", logo: img, img: img2, discription: "Get hooked on a hearty helping of heroes and villains" },
   { id: 7, name: "MARVEL CHARACTERS", logo: img, img: img3, discription: "Get hooked on a hearty helping of heroes and villains" },
