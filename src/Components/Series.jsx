@@ -68,7 +68,7 @@ const Series = () => {
   return (
     <>
       {/* <div className="banner">
-        <div className="mt-16 pt-28 container mx-auto text-white">
+        <div className="mt-16 lg:pt-28 py-10 container mx-auto text-white">
           <h1 className="text-2xl md:text-4xl mb-3">Series Super Heroes</h1>
           <p className="text-sm md:text-xl font-light">All Your Favorite Stories and More. Start Streaming Now.</p>
         </div>
@@ -79,7 +79,7 @@ const Series = () => {
             <h4 className="text-xl lg:text-3xl font-semibold mb-5 uppercase">LATEST Series</h4>
             <input type="search" placeholder="Search" onChange={(e) => setSearchInput(e.target.value)} className="py-2 px-2 w-80 text-red-500 bg-neutral-50 border outline-none border-red-500 rounded" />
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-4 h-1/2">
+          <div className="flex flex-wrap items-center justify-center gap-4 min-h-[75vh]">
             {loading ? (
             (<div className="Loading flex justify-center items-center h-80 w-full">
               <PulseLoader color="#c70000" />

@@ -24,14 +24,14 @@ const Hollywood = () => {
   return (
     <>
       <div className="banner">
-        <div className="mt-16 pt-28 container mx-auto text-white">
+        <div className="mt-16 lg:pt-28 py-10 container mx-auto text-white">
           <h1 className="text-2xl md:text-4xl mb-3">bollywood Super Heroes</h1>
           <p className="text-sm md:text-xl font-light">All Your Favorite Stories and More. Start Streaming Now.</p>
         </div>
 
 
       </div>
-      <div className="container mx-auto xl:px-4">
+      <div className="container mx-auto xl:px-4 min-h-[75vh]">
       <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 mt-20 mb-20 h-4/6">
         {/* {
           movies.map((item) => {

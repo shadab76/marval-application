@@ -254,6 +254,9 @@ border: none;
   .scrollbar-hidden::-webkit-scrollbar {
     display: none;
   }
+  .banner{
+    height: 100%;
+  }
   
   /* Hide scrollbar for IE, Edge add Firefox */
   .scrollbar-hidden {
