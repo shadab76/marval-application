@@ -16,7 +16,7 @@ const Home = () => {
         {/* <LatestMovies/>
         <PopularMovies/> */}
         <div className="banner">
-        <div className="mt-20 pt-28 container mx-auto text-white">
+        <div className="mt-20 lg:pt-28 py-10 container mx-auto text-white mb-10">
           <img src={img} alt="" />
           <h1 className="text-2xl md:text-4xl mb-3">A Universe of Super Heroes</h1>
           <p className="text-sm md:text-xl font-light">All Your Favorite Stories and More. Start Streaming Now.</p>

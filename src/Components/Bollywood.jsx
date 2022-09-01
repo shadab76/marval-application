@@ -32,7 +32,7 @@ const Bollywood = () => {
   return (
     <>
       <div className="banner">
-        <div className="mt-16 pt-28 container mx-auto text-white">
+        <div className="mt-16 lg:pt-28 py-10 container mx-auto text-white">
           <h1 className="text-2xl md:text-4xl mb-3">bollywood Super Heroes</h1>
           <p className="text-sm md:text-xl font-light">All Your Favorite Stories and More. Start Streaming Now.</p>
         </div>

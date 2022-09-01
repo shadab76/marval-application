@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Header from './Components/Header';
 import Navigation from './Components/Navigation';
 import Movies from './Components/Movies';
 import Home from './Components/Home';
@@ -14,6 +13,9 @@ import Bollywood from './Components/Bollywood';
 import Footer from './Components/Footer';
 import DetailPage from './Components/DetailPage';
 import DetailPage2 from './Components/DetailPage2';
+import LoginPage from './Pages/LoginPage';
+import SignupPage from './Pages/SignupPage';
+import ForgotPassword from './Pages/ForgotPassword';
 
 function App() {
   return (
@@ -22,7 +24,10 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home />} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/signup" element={<SignupPage/>} />
+          <Route path="/forgotpassword" element={<ForgotPassword/>} />
           <Route path="movies" element={<Movies />} />
           <Route path="series" element={<Series />} />
           <Route path="hollywood" element={<Hollywood />} />

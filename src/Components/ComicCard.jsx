@@ -58,7 +58,7 @@ const ComicCard = () => {
             <h4 className="text-xl lg:text-3xl font-semibold mb-5">LATEST MOVIES</h4>
             <input type="search" placeholder="Search" onChange={(e) => setSearchInput(e.target.value)} className="py-2 px-2 w-80 text-red-500 bg-neutral-50 border outline-none border-red-500 rounded" />
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 min-h-[75vh]">
             {Loading ? <Loader className={style.loader} /> :
               (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
