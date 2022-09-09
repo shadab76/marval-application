@@ -63,7 +63,7 @@ const Navigation = () => {
             {(windowWidth < 992) ? (
                 <>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/home">Home</Link>
                 </li>
                 <li>
                     <Link to="/movies">Movies</Link>

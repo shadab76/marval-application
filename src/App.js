@@ -16,6 +16,7 @@ import DetailPage2 from './Components/DetailPage2';
 import LoginPage from './Pages/LoginPage';
 import SignupPage from './Pages/SignupPage';
 import ForgotPassword from './Pages/ForgotPassword';
+import WecomePage from './Components/WecomePage';
 
 function App() {
   return (
@@ -24,10 +25,11 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-        <Route path='/' element={<Home />} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/signup" element={<SignupPage/>} />
-          <Route path="/forgotpassword" element={<ForgotPassword/>} />
+          <Route path='/' element={<WecomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/home" element={<Home />} />          
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="movies" element={<Movies />} />
           <Route path="series" element={<Series />} />
           <Route path="hollywood" element={<Hollywood />} />
@@ -36,7 +38,7 @@ function App() {
           <Route path="/detail/:id" element={<DetailPage />} />
           <Route path="/detail2/:id" element={<DetailPage2 />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </>
   );
