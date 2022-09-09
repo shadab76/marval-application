@@ -1,14 +1,60 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
-    const [check, setCheck] = useState(false);
+    const navigate = useNavigate()
+    const [check,setCheck] = useState(false)
 
-    // const handleChange = (e) => {
-    //     setLoginState({ ...loginState, [e.target.id]: e.target.value })
-    // }
+    const [email,setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
+    async function LoginHandle(e){
+        e.preventDefault()
+
+        const body={
+            email,
+            password
+        }
+
+
+        const response =  await axios.post("http://localhost:1337/api/login",body).then((result)=>{
+            return result.data
+            // console.log(result,"line")
+        }).catch((error)=>{
+            console.log("error",error)
+        })
+    //    const response =  await fetch('http://localhost:1337/api/login',{
+    //         method:'GET',
+    //         headers:{
+    //             'Content-Type':'application/json',
+    //         },
+    //     const body={
+    //            email,
+    //            password
+    //        },
+           
+    //     })
+
+    //    const data = response;
+       console.log(response,'lind26')
+
+       if(response.user){
+            localStorage.setItem('token',response.user)
+            
+            alert("Login successfull")
+            // window.location.href='/home'
+            navigate('/home')
+            
+       }else{
+        alert('please check your username and password')
+        // window.location.href='/login'
+        navigate('/login')
+       }
+
+       console.log(response.user,'line78')
+    }
 
     return (
         <>
@@ -16,13 +62,16 @@ const LoginPage = () => {
                 <div className="container px-6 py-12 h-full">
                     <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 mt-10">
                         <div className="w-full  md:w-8/12 lg:w-1/3 lg:ml-20">
-                        <img src={require('../Accects/Logo.svg').default}  className="block mx-auto mb-10" alt="" />
-                            <form>
+                            <img src={require('../Accects/Logo.svg').default} className="block mx-auto mb-10" alt="" />
+                            <form onSubmit={(e)=>LoginHandle(e)}>
                                 <div className="mb-6">
                                     <input
                                         type="text"
                                         className="form-control block w-full px-4 py-2 text-md font-normal text-rose-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-rose-700 focus:bg-white focus:border-rose-600 focus:outline-none"
                                         placeholder="Email address"
+                                        name="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </div>
 
@@ -31,21 +80,24 @@ const LoginPage = () => {
                                         type={check ? "text" : "password"}
                                         className="form-control block w-full px-4 py-2 text-md font-normal text-rose-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-rose-700 focus:bg-white focus:border-rose-600 focus:outline-none"
                                         placeholder="Password"
+                                        name="password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
 
                                 <div className="flex justify-between flex-wrap items-center mb-6">
                                     <div className="form-group form-check">
-                                    <label className="form-check-label inline-block text-white cursor-pointer">
-                                        <input
-                                            type="checkbox"
-                                            className=" h-4 w-4 border border-gray-300 rounded-sm transition duration-200 mt-1 align-top bg-no-repeat bg-center float-left mr-2 cursor-pointer"
-                                            // id="exampleCheck3"
-                                            // checked
-                                            onClick={() => setCheck(!check)}
-                                        />
-                                        Remember me
-                                    </label>
+                                        <label className="form-check-label inline-block text-white cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                className=" h-4 w-4 border border-gray-300 rounded-sm transition duration-200 mt-1 align-top bg-no-repeat bg-center float-left mr-2 cursor-pointer"
+                                                // id="exampleCheck3"
+                                                // checked
+                                                onClick={() => setCheck(!check)}
+                                            />
+                                            Remember me
+                                        </label>
                                     </div>
                                     <Link
                                         to="/forgotpassword"
@@ -61,8 +113,8 @@ const LoginPage = () => {
                                 >
                                     Login
                                 </button>
-                                <Link to="/signup" className="text-sm mt-5 pb-1 block text-center text-gray-200 underline">Create account</Link>
                             </form>
+                                <Link to="/signup" className="text-sm mt-5 pb-1 block text-center text-gray-200 underline">Create account</Link>
                         </div>
                     </div>
                 </div>
