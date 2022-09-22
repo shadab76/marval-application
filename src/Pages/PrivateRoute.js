@@ -1,25 +1,46 @@
-import React,{useAuth} from 'react'
-import { Route, Redirect } from 'react-router-dom';
+// import React,{useEffect} from 'react'
+// import { Route,Navigate, useNavigate  } from 'react-router-dom';
 
-const PrivateRoute = ({ children, ...rest }) => {
-  let auth = useAuth();
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        auth.user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
+// const PrivateOutlet = ({ children, ...rest }) => {
+//   const navigate = useNavigate();
 
-export default PrivateRoute
+//   const AuthToken  = localStorage.getItem('token')
+// //   useEffect(() => {
+// //     const token = localStorage.getItem('token')
+// //     if (token) {
+// //       // const user = jwt.decode(token)
+// //       const user = localStorage.setItem('token', token);
+// //       console.log(user,"lne8888")
+// //       if (!user) {
+// //         localStorage.removeItem('token')
+// //         // window.location.href = '/'
+// //         console.log(user,token,"lne8888")
+// //         navigate('/login',{ replace: true })
+// //       }else{
+// //         navigate('/home',{ replace: true })
+// //       }
+// //     }
+// //   }, [navigate])
+// useEffect(() => {
+//         if (AuthToken) {
+//             navigate('/home')
+//         } else {
+//             localStorage.removeItem('token')
+//             navigate('/login')
+//         }
+//     }, [AuthToken, navigate])
+
+  
+// //   return (AuthToken ? children : <Navigate to="/login" />);
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => AuthToken
+//         ? children
+//         : <Navigate to="/login" />
+//       }
+//     />
+//   )
+// }
+
+// export default PrivateOutlet

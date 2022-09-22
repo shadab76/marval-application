@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
     const navigate = useNavigate()
+    const Location = useLocation()
     const [check,setCheck] = useState(false)
 
     const [email,setEmail] = useState('')
@@ -17,43 +18,27 @@ const LoginPage = () => {
             email,
             password
         }
-
-
         const response =  await axios.post("http://localhost:1337/api/login",body).then((result)=>{
             return result.data
-            // console.log(result,"line")
         }).catch((error)=>{
             console.log("error",error)
         })
-    //    const response =  await fetch('http://localhost:1337/api/login',{
-    //         method:'GET',
-    //         headers:{
-    //             'Content-Type':'application/json',
-    //         },
-    //     const body={
-    //            email,
-    //            password
-    //        },
-           
-    //     })
+        
 
-    //    const data = response;
-       console.log(response,'lind26')
-
-       if(response.user){
+        if(response.user){
             localStorage.setItem('token',response.user)
             
             alert("Login successfull")
             // window.location.href='/home'
             navigate('/home')
-            
        }else{
         alert('please check your username and password')
         // window.location.href='/login'
         navigate('/login')
+        Location.reload(true);
        }
-
-       console.log(response.user,'line78')
+    //    console.log(response,'lind26')
+       Location.reload(true);
     }
 
     return (

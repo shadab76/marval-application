@@ -13,7 +13,7 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 import { PulseLoader, SyncLoader } from "react-spinners";
 import { Link, useNavigate, useParams } from "react-router-dom";
 const style = {
-    card: `border basis-1/4 border-slate-600 shadow-sm rounded`,
+    card: `border basis-1/2 md:basis-1/4 lg:basis-1/4  border-slate-600 shadow-sm rounded`,
     error: `text-center font-medium text-sm`,
     text: `text-sm font-medium p-3`,
     loader: `column`
@@ -112,13 +112,15 @@ const LatestMovies = () => {
                                 },
                                 640: {
                                     width: 640,
-                                    slidesPerView: 1,
-                                    slidesPerGroup:1
+                                    slidesPerView: 2,
+                                    slidesPerGroup:2,
+                                    spaceBetween:50
                                 },
                                 320: {
                                     width: 320,
-                                    slidesPerView: 1,
-                                    slidesPerGroup:1
+                                    slidesPerView: 2,
+                                    slidesPerGroup:2,
+                                    spaceBetween:50
                                 },
                             }}
                         >

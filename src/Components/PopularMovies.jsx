@@ -98,13 +98,15 @@ const PopularMovies = () => {
                                 },
                                 640: {
                                     width: 640,
-                                    slidesPerView: 1,
-                                    slidesPerGroup:1
+                                    slidesPerView: 2,
+                                    slidesPerGroup:2,
+                                    spaceBetween:50
                                 },
                                 320: {
                                     width: 320,
-                                    slidesPerView: 1,
-                                    slidesPerGroup:1
+                                    slidesPerView: 2,
+                                    slidesPerGroup:2,
+                                    spaceBetween:50
                                 },
                             }}
                         >

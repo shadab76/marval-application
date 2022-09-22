@@ -2,7 +2,7 @@
   "name": "marvel-application",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://localhost:1337",
+  "proxy": "http://localhost:1337",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -11,6 +11,7 @@
     "jsonwebtoken": "^8.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-outside-click-handler": "^1.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.4",
