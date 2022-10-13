@@ -1,44 +1,45 @@
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const LoginPage = () => {
     const navigate = useNavigate()
     const Location = useLocation()
-    const [check,setCheck] = useState(false)
+    const [check, setCheck] = useState(false)
 
-    const [email,setEmail] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    async function LoginHandle(e){
+    async function LoginHandle(e) {
         e.preventDefault()
 
-        const body={
+        const body = {
             email,
             password
         }
-        const response =  await axios.post("http://localhost:1337/api/login",body).then((result)=>{
+        const response = await axios.post("https://dry-garden-97696.herokuapp.com/api/login", body).then((result) => {
             return result.data
-        }).catch((error)=>{
-            console.log("error",error)
+        }).catch((error) => {
+            console.log("error", error)
         })
-        
 
-        if(response.user){
-            localStorage.setItem('token',response.user)
-            
+
+        if (response.user) {
+            localStorage.setItem('token', response.user)
+
             alert("Login successfull")
             // window.location.href='/home'
             navigate('/home')
-       }else{
-        alert('please check your username and password')
-        // window.location.href='/login'
-        navigate('/login')
+            Location.reload(true);
+        } else {
+            alert('please check your username and password')
+            // window.location.href='/login'
+            navigate('/login')
+            Location.reload(true);
+        }
+        //    console.log(response,'lind26')
         Location.reload(true);
-       }
-    //    console.log(response,'lind26')
-       Location.reload(true);
     }
 
     return (
@@ -48,7 +49,7 @@ const LoginPage = () => {
                     <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 mt-10">
                         <div className="w-full  md:w-8/12 lg:w-1/3 lg:ml-20">
                             <img src={require('../Accects/Logo.svg').default} className="block mx-auto mb-10" alt="" />
-                            <form onSubmit={(e)=>LoginHandle(e)}>
+                            <form onSubmit={(e) => LoginHandle(e)}>
                                 <div className="mb-6">
                                     <input
                                         type="text"
@@ -99,7 +100,7 @@ const LoginPage = () => {
                                     Login
                                 </button>
                             </form>
-                                <Link to="/signup" className="text-sm mt-5 pb-1 block text-center text-gray-200 underline">Create account</Link>
+                            <Link to="/signup" className="text-sm mt-5 pb-1 block text-center text-gray-200 underline">Create account</Link>
                         </div>
                     </div>
                 </div>

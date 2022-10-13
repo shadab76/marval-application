@@ -5,31 +5,31 @@ import { Link, useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
     const [check, setCheck] = useState(false);
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
+    const [name,setName] = useState('')
+    const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
-    async function SubmitHandle(e) {
+    async function SubmitHandle(e){
         e.preventDefault()
-        const body = {
-            name,
-            email,
-            password
-        }
-        const response = await axios.post("https://dry-garden-97696.herokuapp.com/api/register", body).then((result) => {
+        const body= {
+                name,
+                email,
+                password
+            }
+        const response =  await axios.post("https://sarverlogin.herokuapp.com//api/register",body).then((result)=>{
             return result.data;
-        }).catch((error) => {
-            console.log("error", error)
+        }).catch((error)=>{
+            console.log("error",error)
         })
+        
+        console.log("line 13",response)       
 
-        console.log("line 13", response)
-
-        if (response.status === 'Ok') {
+       if(response.status === 'Ok'){
             navigate('/login');
-        }
+       }
 
-        console.log(response, response.status, 'line98989')
+       console.log(response,response.status,'line98989')
 
     }
 
@@ -100,12 +100,12 @@ const SignupPage = () => {
                                 className="inline-block px-7 py-3 bg-button text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                                 data-mdb-ripple="true"
                                 data-mdb-ripple-color="light"
-                                onClick={(e) => SubmitHandle(e)}
+                                onClick={(e)=>SubmitHandle(e)}
                             >
                                 SIGN UP
                             </button>
                         </form>
-                        <Link to="/login" className="text-sm text-center block text-gray-200 underline mt-5">I have already account</Link>
+                            <Link to="/login" className="text-sm text-center block text-gray-200 underline mt-5">I have already account</Link>
                     </div>
                 </div>
             </div>
